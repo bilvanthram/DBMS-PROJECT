@@ -1,0 +1,48 @@
+services:
+  # 1. API Gateway
+  - type: web
+    name: my-api-gateway
+    env: node
+    rootDir: gateway
+    buildCommand: npm install
+    startCommand: node server.js # Change to your gateway startup file
+
+  # 2. Core Backend Service
+  - type: web
+    name: my-core-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js # Change to your backend startup file
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: my-project-db
+          property: connectionString
+
+  # 3. Task Service / Background Worker
+  - type: worker
+    name: my-task-service
+    env: node
+    rootDir: taskservices
+    buildCommand: npm install
+    startCommand: node worker.js # Change to your task startup file
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: my-project-db
+          property: connectionString
+
+  # 4. Frontend Static Site
+  - type: web
+    name: my-frontend
+    env: static
+    rootDir: frontend
+    buildCommand: npm run build # Or yarn build / vite build
+    publishDir: dist # Change to 'build' if using Create-React-App
+
+databases:
+  # Automatically creates your PostgreSQL database and links it!
+  - name: my-project-db
+    plan: free
+    region: oregon
