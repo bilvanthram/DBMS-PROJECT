@@ -33,13 +33,14 @@ services:
           name: my-project-db
           property: connectionString
 
-  # 4. Frontend Static Site
-  - type: web
+ # # 4. Frontend Static Site
+  - type: static
     name: my-frontend
     env: static
     rootDir: frontend
-    buildCommand: npm run build # Or yarn build / vite build
-    publishDir: dist # Change to 'build' if using Create-React-App
+    buildCommand: npm run build
+    publishDir: dist
+
 
 databases:
   # Automatically creates your PostgreSQL database and links it!
