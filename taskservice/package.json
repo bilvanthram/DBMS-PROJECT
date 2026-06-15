@@ -1,0 +1,22 @@
+{
+  "name": "reportflow-taskservice",
+  "version": "1.0.0",
+  "description": "Node.js + MongoDB task service for DBMS PROJECT (reportflow)",
+  "license": "ISC",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "dev": "nodemon main.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
