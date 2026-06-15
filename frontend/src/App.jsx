@@ -6,6 +6,8 @@ import { ReportDetails } from './pages/ReportDetails.jsx';
 import { SignIn } from './pages/SignIn.jsx';
 import { SignUp } from './pages/SignUp.jsx';
 import { ViewReports } from './pages/ViewReports.jsx';
+import { Tasks } from './pages/Tasks.jsx';
+
 
 export default function App() {
   const [activePage, setActivePage] = useState('dashboard');
@@ -51,6 +53,10 @@ export default function App() {
 
     if (activePage === 'reportDetails') {
       return <ReportDetails report={selectedReport} onBack={() => setActivePage('viewReports')} />;
+    }
+
+    if (activePage === 'tasks') {
+      return <Tasks session={session} />;
     }
 
     return <Dashboard session={session} onChangePage={setActivePage} />;

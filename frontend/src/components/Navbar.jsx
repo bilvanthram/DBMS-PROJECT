@@ -1,9 +1,10 @@
-import { ChevronDown, ClipboardPenLine, FileText, Home, LogOut, UserRound } from 'lucide-react';
+import { ChevronDown, ClipboardPenLine, FileText, Home, LogOut, UserRound, ListTodo } from 'lucide-react';
 
 const navItems = [
   ['dashboard', 'Dashboard', Home],
   ['generateReports', 'Create Report', ClipboardPenLine],
   ['viewReports', 'View Reports', FileText],
+  ['tasks', 'Tasks', ListTodo],
 ];
 
 export function Navbar({ activePage, session, onChangePage, onLogout, children }) {

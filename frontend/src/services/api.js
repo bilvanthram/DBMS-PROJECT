@@ -183,3 +183,12 @@ export function updateTask(session, id, task) {
 export function deleteTask(session, id) {
   return taskRequest(session, 'DELETE', `deletetask/${id}`);
 }
+
+export async function fetchUsers(session) {
+  const response = await fetch(`${API_BASE}/api/users`, {
+    headers: authHeaders(session),
+  });
+  if (!response.ok) throw new Error(await errorMessage(response, 'Users list unavailable'));
+  return response.json();
+}
+
