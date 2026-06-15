@@ -50,6 +50,7 @@ export function Dashboard({ session, onChangePage }) {
 
   return (
     <div className="content">
+
       <section className="page-title">
         <h1>Dashboard</h1>
       </section>
@@ -92,12 +93,40 @@ export function Dashboard({ session, onChangePage }) {
               ))}
             </tbody>
           </table>
-          {!recentReports.length && <div className="empty-state">No reports created yet.</div>}
+
+          {!recentReports.length && (
+            <div className="empty-state">No reports created yet.</div>
+          )}
         </div>
-        <button className="secondary-action" type="button" onClick={() => onChangePage('viewReports')}>
+
+        <button
+          className="secondary-action"
+          type="button"
+          onClick={() => onChangePage('viewReports')}
+        >
           View All Reports
         </button>
       </section>
+
+      {/* ✅ TEAM INFO SECTION ADDED */}
+      <section className="panel page-panel">
+        <h2>👨‍💻 Team Information</h2>
+
+        <div style={{ lineHeight: "1.8" }}>
+          <p><b>Project:</b> Report Management System</p>
+          <p><b>Project No:</b> PS-28</p>
+
+          <p><b>Members:</b></p>
+          <ul>
+            <li>Bilvanth Ram - ID: 2500031922</li>
+            <li>Siva Charan Reddy - ID: 2500031705</li>
+            <li>Jaswanth - ID: 2500031966</li>
+          </ul>
+
+          <p><b>Tech Stack:</b> React + Spring Boot + PostgreSQL + MongoDB</p>
+        </div>
+      </section>
+
     </div>
   );
 }
@@ -165,6 +194,7 @@ function buildDepartmentActivity(reports) {
 
     const currentLatest = activity.latestActivityAt ? new Date(activity.latestActivityAt) : null;
     const reportDate = report.generatedOn ? new Date(report.generatedOn) : null;
+
     if (reportDate && (!currentLatest || reportDate > currentLatest)) {
       activity.latestReportName = report.name;
       activity.latestReportType = report.reportType;
