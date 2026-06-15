@@ -33,13 +33,14 @@ services:
           name: my-project-db
           property: connectionString
 
- # # 4. Frontend Static Site
+# # 4. Frontend Static Site
   - type: web
     name: my-frontend
     env: static
     rootDir: frontend
     buildCommand: npm run build
-    publishDir: dist
+    staticPublishPath: dist # Changed from publishDir to staticPublishPath
+
 
 databases:
   # Automatically creates your PostgreSQL database and links it!
